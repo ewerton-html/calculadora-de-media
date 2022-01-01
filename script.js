@@ -1,5 +1,4 @@
 //convertendo com só um campo de entrada
-//não está completo
 var valor = [];
 var cardinal = 1;
 var media = 0;
@@ -15,9 +14,10 @@ function adicionarNaMedia() {
   valor.push(Number(valorAdicionado.value));
   console.log(valor);
   //logo em sequido, fiz com que o campo limpasse depois do evento
-  valorAdicionado.innerHTML = valorAdicionado = document.querySelector(
-    "#valor"
-  ).value = "";
+  valorAdicionado.innerHTML =
+    valorAdicionado =
+    document.querySelector("#valor").value =
+      "";
   cardinal = cardinal + 1;
   mudaValor();
 }
@@ -34,24 +34,32 @@ function somaValores(array) {
 }
 //enfim, fiz o calculo da media
 function calculandoMedia() {
-  media = somaValores(valor) / valor.length;
-  media = media.toFixed(1);
-  var resultado = document.querySelector("#resultadoDaMedia");
-  var resultadoNovo = "A média é " + media;
-  resultado.innerHTML = resultadoNovo;
+  if (cardinal <= 2) {
+    alert("Tem que ter, pelo menos, dois valores adicionados");
+  } else {
+    media = somaValores(valor) / valor.length;
+    console.log(media);
+    media = media.toFixed(1);
+    console.log(media);
+    let cardinalAtual = cardinal - 1;
+    let resultado = document.querySelector("#resultadoDaMedia");
+    let resultadoNovo =
+      "A média é " + media + " dos " + cardinalAtual + " valores adicionados";
+    resultado.innerHTML = resultadoNovo;
+    // abilitando botão de limpar
+    let btmLimpar = document.querySelector(".Limpar");
+    btmLimpar.style.display = "block";
+  }
 }
 mudaValor();
 
-//var notaDoPrimeiroBimestre = 0;
-//var notaDoPrimeiroBimestre = 0;
-//var notaDoPrimeiroBimestre = 0;
-//var notaDoPrimeiroBimestre = 0;
-/*var notaFinal =
-  (notaDoPrimeiroBimestre +
-    notaDoPrimeiroBimestre +
-    notaDoPrimeiroBimestre +
-    notaDoPrimeiroBimestre) /
-  4;
-var notaFixa = notaFinal.toFixed(1);
-console.log("Bem vindo" + nome);
-console.log(notaFinal); */
+function limpar() {
+  let resultado = document.querySelector("#resultadoDaMedia");
+  resultado.innerHTML = "";
+
+  cardinal = 1;
+
+  // desabilitando botão de limpar
+  let btmLimpar = document.querySelector(".Limpar");
+  btmLimpar.style.display = "none";
+}
