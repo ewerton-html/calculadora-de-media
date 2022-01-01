@@ -59,6 +59,9 @@ function limpar() {
 
   cardinal = 1;
 
+  //atulizando para mudar o valor
+  mudaValor();
+
   // desabilitando botão de limpar
   let btmLimpar = document.querySelector(".Limpar");
   btmLimpar.style.display = "none";
